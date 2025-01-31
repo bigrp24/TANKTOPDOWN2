@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwh3fkua06itw"]
+
+[ext_resource type="FontFile" uid="uid://0r7amikww1k" path="res://Game Of Squids.otf" id="1_6sikt"]
+[ext_resource type="Script" path="res://start.gd" id="1_xlpv8"]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_xlpv8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1172.0
+offset_bottom = 659.0
+color = Color(0.0431373, 0.486275, 0.176471, 1)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 461.0
+offset_top = 441.0
+offset_right = 690.0
+offset_bottom = 494.0
+theme_override_fonts/font = ExtResource("1_6sikt")
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 167.0
+offset_top = 197.0
+offset_right = 1028.0
+offset_bottom = 393.0
+theme_override_fonts/font = ExtResource("1_6sikt")
+theme_override_font_sizes/font_size = 67
+text = "Top Down Tank Game
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 156.0
+offset_top = 327.0
+offset_right = 1020.0
+offset_bottom = 523.0
+theme_override_fonts/font = ExtResource("1_6sikt")
+theme_override_font_sizes/font_size = 30
+text = "FIND TANKs AND COLLECT GEMS TO WIN
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf3akj7euo7fn"]
+
+[ext_resource type="Texture2D" uid="uid://dlp7vd6kpxlwm" path="res://PNG/Default size/tankBody_sand_outline.png" id="1_gy8u0"]
+[ext_resource type="Script" path="res://big_enemy.gd" id="1_w2et7"]
+[ext_resource type="PackedScene" uid="uid://bb15mektw5f75" path="res://e_barrel.tscn" id="2_p7tre"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2bkb"]
+radius = 198.04
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xy8sr"]
+radius = 1432.21
+
+[node name="BIGenemy" type="CharacterBody2D" groups=["BIGenemy"]]
+script = ExtResource("1_w2et7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(158.543, 149.315)
+rotation = -1.5708
+scale = Vector2(8.11023, 8.92716)
+texture = ExtResource("1_gy8u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(160, 138)
+shape = SubResource("CircleShape2D_m2bkb")
+
+[node name="DetectRadius" type="Area2D" parent="."]
+position = Vector2(158.543, 149.315)
+rotation = -1.5708
+scale = Vector2(8.11023, 8.92716)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
+position = Vector2(-0.577652, -0.95697)
+rotation = 1.5708
+scale = Vector2(0.112018, 0.123301)
+shape = SubResource("CircleShape2D_xy8sr")
+
+[node name="E_Barrel" parent="." instance=ExtResource("2_p7tre")]
+position = Vector2(325, 146)
+
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_detect_radius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_detect_radius_body_exited"]
